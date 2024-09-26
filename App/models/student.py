@@ -3,8 +3,8 @@ from App.database import db
 
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    fristname =  db.Column(db.String(20), nullable=False)
-    lastnamename =  db.Column(db.String(20), nullable=False)
+    firstname =  db.Column(db.String(20), nullable=False)
+    lastname =  db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(20), nullable=False, unique=True)
     degree = db.Column(db.String(120), nullable=False)
     university = db.Column(db.String(120), nullable=False)
@@ -15,8 +15,8 @@ class Student(db.Model):
 
 
     def __init__(self, firstname, lastname, email, degree, university, year_of_study, password):
-        self.fristname = firstname
-        self.lastnamename = lastname
+        self.firstname = firstname
+        self.lastname = lastname
         self.email = email
         self.degree = degree
         self.university = university
@@ -31,8 +31,8 @@ class Student(db.Model):
     def get_json(self):
         return{
             'id': self.id,
-            'firstname': self.fristname,
-            'lastname': self.lastnamename,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
             'degree': self.degree,
             'university': self.university
         }
