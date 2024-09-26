@@ -8,5 +8,8 @@ def create_student(firstname, lastname, email, degree, university, year_of_study
     db.session.commit()
     return newstudent
 
+def get_user_by_name(firstname, lastname):
+    return Student.query.filter_by(firstname=firstname, lastname=lastname).first()
+
 def get_all_students():
     return Student.query.all()

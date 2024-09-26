@@ -2,6 +2,7 @@ import click, pytest, sys
 from flask import Flask
 from flask.cli import with_appcontext, AppGroup
 from sqlalchemy.exc import IntegrityError
+from datetime import datetime
 
 from App.database import db, get_migrate
 from App.models import * #importing all models
@@ -26,9 +27,7 @@ def init():
 |   User Group Commands
 |   These are a list of commands used to perform operations involving student users
 '''
-
 student_cli = AppGroup('student', help='Student object commands') 
-app.cli.add_command(student_cli)
 
 @student_cli.command("create", help="Creates a new user")
 @click.argument('firstname', default='Jhon')
@@ -38,8 +37,8 @@ app.cli.add_command(student_cli)
 @click.argument('university', default='University of Technology')
 @click.argument('year_of_study', default='2nd Year')
 @click.argument('password', default='jhonpass')
-def create_user(firstname, lastname, email, degree, university, year_of_study, password):
-    newstudent = Student(firstname, lastname, email,degree, university, year_of_study, password)
+def create_student(firstname, lastname, email, degree, university, year_of_study, password):
+    newstudent = create_student(firstname, lastname, email, degree, university, year_of_study, password)
     try:
         db.session.add(newstudent)
         db.session.commit()
@@ -51,7 +50,7 @@ def create_user(firstname, lastname, email, degree, university, year_of_study, p
 
 
 @student_cli.command("list", help="Displays all student users")
-def display_all_users():
+def view_student_list():
     students = get_all_students()
     if not students:
         print("No student users found.")
@@ -64,14 +63,14 @@ def display_all_users():
 @student_cli.command("view-competitions", help="Displays all competitions participated by student")
 @click.argument('firstname', default='Bob')
 @click.argument('lastname', default='Smith')
-def view_competition_list(firstname, lastname):
-    student = Student.query.filter_by(firstname=firstname, lastname=lastname).first()
+def view_students_showcase(firstname, lastname):
+    student = get_user_by_name(firstname, lastname)
     
     if not student:
-        print("No student found with the given name.")
+        print(f" {student.firstname} {student.lastname} not found within database.")
         return
     
-    participations = Participation.query.filter_by(student_id=student.id).all()
+    participations = get_participation_by_student_id(student.id)
     
     if not participations:
         print(f"{student.firstname} {student.lastname} has not participated in any competitions.")
@@ -85,8 +84,46 @@ def view_competition_list(firstname, lastname):
         else:
             print(f"Uh oh, something is not right.")
 
+app.cli.add_command(student_cli)
 
 
+
+'''
+|   User Group Commands
+|   These are a list of commands used to perform operations involving student users
+'''
+competition_cli = AppGroup('competition', help='Competition object commands') 
+
+@competition_cli.command("create",help="Creates a new competition")
+@click.argument('name', default='Test')
+@click.argument('date', default='2024-01-22')
+@click.argument('location', default='Test City')
+@click.argument('organizer', default='Test Organizers')
+def add_competition(name, date, location, organizer):
+    
+    newcompetition = create_competition(name, date, location, organizer)
+    try:
+        db.session.add(newcompetition)
+        db.session.commit()
+    except IntegrityError as e:
+        db.session.rollback()
+        print("Competition event already exists!")
+    else:
+        print(f"New Competition created!")
+
+
+@competition_cli.command("list", help="View competitions list")
+def view_competition_list():
+    competitions = get_all_competitions()
+    if not competitions:
+        print("No competitions found.")
+    else:
+        for competition in competitions:
+            print(competition)  
+            print()
+
+
+app.cli.add_command(competition_cli)
 
 
 

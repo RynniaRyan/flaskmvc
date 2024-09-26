@@ -10,3 +10,6 @@ def create_participation(student_id, competition_id, results=None):
 
 def get_results(student_id, competition_id):
     return Participation.query.filter_by(student_id=student_id, competition_id=competition_id).first()
+
+def get_participation_by_student_id(student_id):
+    return Participation.query.filter_by(student_id=student_id).all()
