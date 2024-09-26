@@ -24,9 +24,9 @@ class Student(db.Model):
         self.set_password(password)
 
     def __repr__(self):
-        return (f"<Student: {self.firstname} {self.lastname} | "
-                f"Email: {self.email} | Degree: {self.degree} | "
-                f"University: {self.university} | Year: {self.year_of_study}>")
+        return (f"<{self.firstname} {self.lastname} | "
+                f"{self.email} | Degree: {self.degree} | "
+                f"{self.university} | {self.year_of_study}>")
 
     def get_json(self):
         return{

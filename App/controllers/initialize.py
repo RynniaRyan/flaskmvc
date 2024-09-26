@@ -11,7 +11,7 @@ def initialize():
             email="bob.smith@example.com",
             degree="Computer Science",
             university="University of Technology",
-            year_of_study="3rd year",
+            year_of_study="3rd Year",
             password="bobpass")
     return bob   
     
