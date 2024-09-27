@@ -46,7 +46,7 @@ def create_student(firstname, lastname, email, degree, university, year_of_study
         db.session.rollback()
         print("Student user already exists!")
     else:
-        print(f"Student user created! Welcome {firstname}")
+        print(f"Student user {student.firstname} {student.lastname} created!")
 
 
 @student_cli.command("list", help="Displays all student users")

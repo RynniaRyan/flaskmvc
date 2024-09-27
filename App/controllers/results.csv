@@ -1,0 +1,36 @@
+First_Name,Last_Name,Email,Degree,University,Year_of_Study,Competition_Name,Location,Date,Organizer,Rank,Score,Time_Taken
+Felix,Doe,john.doe@email.com,Computer Science,Tech University,3rd,Code Fest 2024,New York,5/10/2024,CodeMasters,1,95,120 mins
+Jane,Smith,jane.smith@email.com,Information Systems,Innovation College,2nd,Hackathon 2024,San Francisco,6/15/2024,Dev League,2,89,130 mins
+Alice,Johnson,alice.j@email.com,Software Engineering,Global University,4th,Algorithm Challenge,Boston,7/20/2024,AlgoWorld,3,82,140 mins
+David,Martinez,david.m@email.com,Data Science,Analytics University,2nd,Code Fest 2024,New York,5/10/2024,CodeMasters,1,96,110 mins
+Emma,Garcia,emma.garcia@email.com,Computer Engineering,Engineering College,1st,Hackathon 2024,San Francisco,6/15/2024,Dev League,3,85,135 mins
+Michael,Wilson,michael.w@email.com,Software Development,Tech City University,3rd,Code Sprint 2024,Chicago,4/25/2024,Code Fest,2,91,125 mins
+Sarah,Lee,sarah.lee@email.com,Computer Science,National University,2nd,Algorithm Challenge,Boston,7/20/2024,AlgoWorld,4,80,145 mins
+Kevin,Anderson,kevin.a@email.com,Information Technology,State Tech,1st,Cyber Cup 2024,Austin,3/30/2024,SecureEvents,1,99,115 mins
+Mia,White,mia.white@email.com,Cybersecurity,Secure University,4th,Hackathon 2024,San Francisco,6/15/2024,Dev League,5,74,155 mins
+Ethan,Thompson,ethan.t@email.com,Computer Science,Tech Institute,3rd,Code Fest 2024,New York,5/10/2024,CodeMasters,2,90,130 mins
+Olivia,Harris,olivia.h@email.com,Software Engineering,Innovation College,2nd,Code Sprint 2024,Chicago,4/25/2024,Code Fest,4,78,150 mins
+Lucas,Clark,lucas.c@email.com,Data Science,Data University,4th,Algorithm Challenge,Boston,7/20/2024,AlgoWorld,3,83,140 mins
+Sophia,Martinez,sophia.m@email.com,Cybersecurity,National Security College,3rd,Cyber Cup 2024,Austin,3/30/2024,SecureEvents,2,88,125 mins
+David,Martinez,david.m@email.com,Data Science,Analytics University,2nd,Code Fest 2024,New York,5/10/2024,CodeMasters,1,96,110 mins
+Emma,Garcia,emma.garcia@email.com,Computer Engineering,Engineering College,1st,Hackathon 2024,San Francisco,6/15/2024,Dev League,3,85,135 mins
+Michael,Wilson,michael.w@email.com,Software Development,Tech City University,3rd,Code Sprint 2024,Chicago,4/25/2024,Code Fest,2,91,125 mins
+Sarah,Lee,sarah.lee@email.com,Computer Science,National University,2nd,Algorithm Challenge,Boston,7/20/2024,AlgoWorld,4,80,145 mins
+Kevin,Anderson,kevin.a@email.com,Information Technology,State Tech,1st,Cyber Cup 2024,Austin,3/30/2024,SecureEvents,1,99,115 mins
+Mia,White,mia.white@email.com,Cybersecurity,Secure University,4th,Hackathon 2024,San Francisco,6/15/2024,Dev League,5,74,155 mins
+Ethan,Thompson,ethan.t@email.com,Computer Science,Tech Institute,3rd,Code Fest 2024,New York,5/10/2024,CodeMasters,2,90,130 mins
+Olivia,Harris,olivia.h@email.com,Software Engineering,Innovation College,2nd,Code Sprint 2024,Chicago,4/25/2024,Code Fest,4,78,150 mins
+Lucas,Clark,lucas.c@email.com,Data Science,Data University,4th,Algorithm Challenge,Boston,7/20/2024,AlgoWorld,3,83,140 mins
+Sophia,Martinez,sophia.m@email.com,Cybersecurity,National Security College,3rd,Cyber Cup 2024,Austin,3/30/2024,SecureEvents,2,88,125 mins
+Noah,Adams,noah.adams@email.com,Software Engineering,Modern Tech University,1st,AI Challenge 2024,Seattle,8/5/2024,AI Innovators,1,97,100 mins
+Ava,Robinson,ava.r@email.com,Computer Science,Green Valley College,2nd,AI Challenge 2024,Seattle,8/5/2024,AI Innovators,3,87,135 mins
+William,Thompson,william.t@email.com,Cybersecurity,Security University,3rd,Tech Hackathon 2024,Miami,9/12/2024,Tech Innovators,2,90,120 mins
+William,Thompson,william.t@email.com,Cybersecurity,Security University,3rd,Cyber Challenge 2024,Austin,10/1/2024,SecureEvents,4,78,150 mins
+Isabella,Martinez,isabella.m@email.com,Information Systems,InfoTech Institute,2nd,Data Science Contest 2024,Boston,7/20/2024,Data League,4,82,145 mins
+Isabella,Martinez,isabella.m@email.com,Information Systems,InfoTech Institute,2nd,Tech Hackathon 2024,Miami,9/12/2024,Tech Innovators,3,85,130 mins
+James,Nelson,james.n@email.com,Computer Engineering,Tech Valley University,3rd,Code Sprint 2024,San Francisco,6/15/2024,Dev League,5,76,155 mins
+Mia,Turner,mia.t@email.com,Software Development,NextGen University,1st,AI Challenge 2024,Seattle,8/5/2024,AI Innovators,1,95,110 mins
+Charlotte,Young,charlotte.y@email.com,Cybersecurity,State Security College,2nd,Data Science Contest 2024,Boston,7/20/2024,Data League,2,91,125 mins
+Grace,Scott,grace.s@email.com,Computer Engineering,Engineering College,4th,Cyber Challenge 2024,Austin,10/1/2024,SecureEvents,4,77,150 mins
+Ethan,Johnson,ethan.j@email.com,Data Science,Analytics Institute,3rd,Cyber Challenge 2024,Austin,10/1/2024,SecureEvents,5,74,160 mins
+Elijah,Wright,elijah.w@email.com,Computer Science,National University,1st,Code Fest 2024,New York,5/10/2024,CodeMasters,3,86,130 mins
