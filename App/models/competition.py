@@ -2,7 +2,7 @@ from App.database import db
 
 class Competition(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
+    name = db.Column(db.String(120), nullable=False, unique=True)
     location = db.Column(db.String, nullable=False)
     date = db.Column(db.String, nullable=False)
     organizer = db.Column(db.String,nullable=False)
@@ -21,10 +21,6 @@ class Competition(db.Model):
               f"{self.formatted_organizers()} | "
               f"{self.location} | "
               f"{self.date}>")
-    
-    # def formatted_date(self):
-    #     # Only shows date format (YYYY/MM/DD)
-    #     return self.date.strftime("%Y/%m/%d")
     
     def formatted_organizers(self):
         # Spliting the organizer string and formatting it

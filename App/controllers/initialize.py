@@ -5,46 +5,60 @@ from App.database import db
 from App.models import Student
 from App.models import Competition
 import csv
+import os
 
 
 def initialize():
     db.drop_all()
     db.create_all()
 
-    with open('results.csv') as file:
-        reader = csv.DictReader(file)  # Fixed the typo here
+    try:
+        with open('database.csv', 'r') as file:
+            reader = csv.DictReader(file)
 
-        for row in reader:
-            student = create_student(
-                first_name=row['First_Name'],
-                last_name=row['Last_Name'],
-                email=row['Email'],
-                degree=row['Degree'],
-                university=row['University'],
-                year_of_study=int(row['Year_of_Study'])
-            )
+            for row in reader:
+                newstudent = Student.query.filter_by(id=row['Student ID']).first()
 
-            competition = create_competition(
-                name=row['Competition Name'],
-                location=row['Location'],
-                date=row['Date'],
-                organizer=row['Organizer']
-            )
+                if not newstudent:
+                    student = create_student(
+                        id=row['Student ID'],
+                        firstname=row['First Name'],
+                        lastname=row['Last Name'],
+                        email=row['Email'],
+                        degree=row['Degree']
+                    )
+                else:
+                    student = newstudent
 
-            create_participation(
-                student_id=student.id,  
-                competition_id=competition.id, 
-                rank=int(row['Rank']),
-                score=int(row['Score']),
-                #time_taken=int(row['Time Taken'].split()[0])  # Add time taken if required
-            )
-            
-    bob = create_student(
-            firstname="Bob",
-            lastname="Smith",
-            email="bob.smith@example.com",
-            degree="Computer Science",
-            university="University of Technology",
-            year_of_study="3rd Year",
-            password="bobpass")
-    return bob
+                newcompetition = Competition.query.filter_by(name=row['Competition Name']).first()
+
+                if not newcompetition:
+                    competition = create_competition(
+                        name=row['Competition Name'],
+                        location=row['Location'],
+                        date=row['Date'],
+                        organizer=row['Organizer']
+                    )
+                else:
+                    competition = newcompetition
+
+                create_participation(
+                    student_id=student.id,  
+                    competition_id=competition.id, 
+                    rank=row['Rank'],
+                    score=float(row['Score']),
+                )
+
+    except FileNotFoundError:
+        cwd = os.getcwd()  # Get the current working directory (cwd)
+        files = os.listdir(cwd)  # Get all the files in that directory
+        print("Files in %r: %s" % (cwd, files))
+
+    # bob = create_student(
+    #         id="816012345"
+    #         firstname="Bob",
+    #         lastname="Smith",
+    #         email="bob.smith@example.com",
+    #         degree="Computer Science",
+
+    # return bob

@@ -5,10 +5,11 @@ from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 
 from App.database import db, get_migrate
-from App.models import * #importing all models
 from App.main import create_app
 #from App.controllers import ( initialize )
 from App.controllers import *
+from App.models import Student
+from App.models import Competition
 
 # This commands file allow you to create convenient CLI commands for testing controllers
 app = create_app()
@@ -17,9 +18,10 @@ migrate = get_migrate(app)
 # This command creates and initializes the database
 @app.cli.command("init", help="Creates and initializes the database")
 def init():
-    bob = initialize()
+    #bob = initialize()
+    initialize()
     print('Database Intialized')
-    print(bob)
+    #print(bob)
 
 
 
@@ -30,15 +32,13 @@ def init():
 student_cli = AppGroup('student', help='Student object commands') 
 
 @student_cli.command("create", help="Creates a new user")
-@click.argument('firstname', default='Jhon')
-@click.argument('lastname', default='Doe')
-@click.argument('email', default='JhonDoe@mail.com')
+@click.argument('id', default=816067890)
+@click.argument('firstname', default='Bob')
+@click.argument('lastname', default='Smith')
+@click.argument('email', default='bob.smith@uni.edu')
 @click.argument('degree', default='Computer Science (Special)')
-@click.argument('university', default='University of Technology')
-@click.argument('year_of_study', default='2nd Year')
-@click.argument('password', default='jhonpass')
-def create_student(firstname, lastname, email, degree, university, year_of_study, password):
-    newstudent = create_student(firstname, lastname, email, degree, university, year_of_study, password)
+def add_student(id,firstname, lastname, email, degree):
+    newstudent = create_student(id, firstname, lastname, email, degree)
     try:
         db.session.add(newstudent)
         db.session.commit()
@@ -67,22 +67,23 @@ def view_students_showcase(firstname, lastname):
     student = get_user_by_name(firstname, lastname)
     
     if not student:
-        print(f" {student.firstname} {student.lastname} not found within database.")
+        print(f"{firstname} {lastname} not found within database.")
         return
-    
-    participations = get_participation_by_student_id(student.id)
+
+    # Use the relationship to access participations directly
+    participations = student.participations
     
     if not participations:
         print(f"{student.firstname} {student.lastname} has not participated in any competitions.")
         return
     
-    # Print each competition name
-    for p in participations:
-        competition = Competition.query.filter_by(id=p.competition_id).first()
+    # Printing each competition
+    for participation in participations:
+        competition = Competition.query.filter_by(id=participation.id).first()
         if competition:
-            print(competition)
+            print(participation)
         else:
-            print(f"Uh oh, something is not right.")
+            print("Uh oh, something is not right.")
 
 app.cli.add_command(student_cli)
 
@@ -95,21 +96,20 @@ app.cli.add_command(student_cli)
 competition_cli = AppGroup('competition', help='Competition object commands') 
 
 @competition_cli.command("create",help="Creates a new competition")
-@click.argument('name', default='Test')
-@click.argument('date', default='2024-01-22')
-@click.argument('location', default='Test City')
-@click.argument('organizer', default='Test Organizers')
+@click.argument('name', default="Bob's Code Challenge")
+@click.argument('date', default='30/09/2024')
+@click.argument('location', default="Bob Centre")
+@click.argument('organizer', default="Bob")
 def add_competition(name, date, location, organizer):
     
-    newcompetition = create_competition(name, date, location, organizer)
-    try:
-        db.session.add(newcompetition)
-        db.session.commit()
-    except IntegrityError as e:
-        db.session.rollback()
-        print("Competition event already exists!")
+    newcompetition = Competition.query.filter_by(name=name).first()
+
+    if not newcompetition:
+        create_competition(name, date, location, organizer)
+        print(f"New Competition '{name}' created!")
     else:
-        print(f"New Competition created!")
+        print(f"Competition '{name}' already exists!")
+        return
 
 
 @competition_cli.command("list", help="View competitions list")
@@ -121,6 +121,40 @@ def view_competition_list():
         for competition in competitions:
             print(competition)  
             print()
+
+
+@competition_cli.command("add-result", help="Import competition results from file.csv")
+@click.argument('competition_name', default="Bob's Code Challenge")
+def add_competition_results(competition_name):
+    competition = Competition.query.filter_by(name=competition_name).first
+
+    if not competition:
+        print(f"Competition {competition_name} does not exist")
+        return
+
+    with open('results.csv', 'r') as file:
+            reader = csv.DictReader(file)
+
+            for row in reader:
+                newstudent = Student.query.filter_by(id=row['Student ID']).first()
+
+                if not newstudent:
+                    student = create_student(
+                        id=row['Student ID'],
+                        firstname=row['First Name'],
+                        lastname=row['Last Name'],
+                        email=row['Email'],
+                        degree=row['Rank']
+                    )
+                else:
+                    student = newstudent
+
+                create_participation(
+                    student_id=student.id,  
+                    competition_id=competition.id, 
+                    rank=row['Rank'],
+                    score=int(row['Score']),
+                )
 
 
 app.cli.add_command(competition_cli)

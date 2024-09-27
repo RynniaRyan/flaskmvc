@@ -1,0 +1,15 @@
+Student ID,First Name,Last Name,Email,Degree,University,Year of Study,Competition Name,Location,Date,Organizer,Rank,Score
+81602301,Alice,Johnson,alice.johnson@uni.edu,Computer Science,MIT,3,CodeFest 2024,"Boston, MA",3/21/2024,ACM,1,98.6
+81609452,Clara,Davis,clara.davis@uni.edu,Information Tech,University of California,4,CodeJam 2024,"San Francisco, CA",5/2/2024,Facebook,3,95
+81601234,Daniel,Lee,daniel.lee@uni.edu,Computer Eng.,Georgia Tech,1,Hackathon Global,"Atlanta, GA",6/15/2024,Hackathon Inc.,2,96.3
+81605678,Emma,Garcia,emma.garcia@uni.edu,Data Science,University of Texas,3,InnovateCode 2024,"Austin, TX",2/25/2024,Microsoft,4,92.5
+81608963,Frank,Martinez,frank.martinez@uni.edu,Software Eng.,MIT,2,CodeQuest International,"Boston, MA",7/11/2024,ACM,7,88.4
+81604321,Grace,Kim,grace.kim@uni.edu,Computer Science,CalTech,4,Hackathon Pro 2024,"Los Angeles, CA",3/19/2024,GitHub,6,89.8
+81607539,Henry,Wang,henry.wang@uni.edu,AI & Robotics,Stanford University,5,AI Code Challenge,"Palo Alto, CA",4/30/2024,OpenAI,2,96.1
+81609876,Isabella,Brown,isabella.brown@uni.edu,Computer Science,MIT,3,Python Masters 2024,"Boston, MA",8/18/2024,Python Software,8,85.7
+81603214,Jack,Wilson,jack.wilson@uni.edu,Software Eng.,University of Illinois,1,National CodeFest,"Chicago, IL",9/22/2024,IBM,10,81.2
+81600123,Natalie,Carter,natalie.carter@uni.edu,Data Science,University of Michigan,3,Global Code Challenge,"Ann Arbor, MI",10/5/2024,IBM,3,94.7
+81607654,Olivia,Patel,olivia.patel@uni.edu,Software Eng.,University of California,4,Silicon Valley Code Fest,"San Jose, CA",7/24/2024,Google,6,89.9
+81609123,Paul,Walker,paul.walker@uni.edu,Computer Science,University of Washington,2,Pacific Hackathon,"Seattle, WA",8/11/2024,Amazon,4,92.1
+81605789,Quinn,Baker,quinn.baker@uni.edu,AI & Robotics,MIT,5,RoboCode 2024,"Boston, MA",9/1/2024,ACM,1,97.5
+81604236,Ryan,Edwards,ryan.edwards@uni.edu,Information Tech,Stanford University,3,Stanford CodeSprint,"Stanford, CA",6/30/2024,Stanford University,5,91.8

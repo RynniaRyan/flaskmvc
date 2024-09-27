@@ -2,8 +2,8 @@ from App.models import Participation
 from App.database import db
 
 
-def create_participation(student_id, competition_id, results=None):
-    newparticipation = Participation(student_id=student_id, competition_id=competition_id, results=results)
+def create_participation(student_id, competition_id, rank, score):
+    newparticipation = Participation(student_id=student_id, competition_id=competition_id, rank=rank, score=score)
     db.session.add(newparticipation)
     db.session.commit()
     return newparticipation
