@@ -77,8 +77,8 @@ app.cli.add_command(student_cli)
 
 
 '''
-|   User Group Commands
-|   These are a list of commands used to perform operations involving student users
+|   Competitions Group Commands
+|   These are a list of commands used to perform operations involving existing competitions
 '''
 competition_cli = AppGroup('competition', help='Competition object commands') 
 
@@ -194,15 +194,3 @@ def view_compeititon_results():
             print()
                 
 app.cli.add_command(competition_cli)
-
-
-# # this command will be : flask user create bob bobpass
-# @user_cli.command("list", help="Lists users in the database")
-# @click.argument("format", default="string")
-# def list_user_command(format):
-#     if format == 'string':
-#         print(get_all_users())
-#     else:
-#         print(get_all_users_json())
-
-# app.cli.add_command(user_cli) # add the group to the cli

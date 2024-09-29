@@ -29,4 +29,3 @@ def get_all_students_json():
         return []
     students = [student.get_json() for student in students]
     return students
-
