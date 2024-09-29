@@ -12,6 +12,22 @@ def create_competition(name, date, location, organizer):
 def get_all_competitions():
     return Competition.query.all()
 
+def get_json(self):
+        return {
+            'id': self.id,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'email': self.email,
+            'degree': self.degree
+        }
+
+def get_all_competitions_json():
+    competitions = Competition.query.all()
+    if not competitions:
+        return []
+    competitions = [competition.get_json() for competition in competitions]
+    return competitions
+
 def delete_participations_by_id(competition_id):
     # Fetch all participations for the competition
     participations = Participation.query.filter_by(competition_id=competition_id).all()
