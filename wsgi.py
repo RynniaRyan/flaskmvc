@@ -24,16 +24,16 @@ def init():
 """ This is a helper function to allow a deafult value for user input """
 def get_input(prompt, default):
     response = input(f"{prompt} (default: '{default}'): ").strip()
-    return response if response else default  # Return response or default if blank
+    return response if response else default
 
 
 '''
-|   User Group Commands
-|   These are a list of commands used to perform operations involving student users
+|   Student Group Commands
+|   These are a list of commands used to perform operations involving existing students
 '''
 student_cli = AppGroup('student', help='Student object commands')
 
-@student_cli.command("list", help="Displays all student users")
+@student_cli.command("list", help="Displays all student within database")
 def view_student_list():
     students = get_all_students()
     if not students:
@@ -45,7 +45,7 @@ def view_student_list():
         print()
 
 
-@student_cli.command("view-participation", help="Displays all students who participated in a particular competition")
+@student_cli.command("view-participation", help="Displays all competition participation of a student and their results")
 def view_students_showcase():
 
     firstname = get_input("\n Enter student's first name", "Bob")
@@ -100,7 +100,7 @@ def add_competition():
         return
 
 
-@competition_cli.command("list", help="View competitions list")
+@competition_cli.command("list", help="Displays all the competitions within database")
 def view_competition_list():
 
     competitions = get_all_competitions()
@@ -114,7 +114,7 @@ def view_competition_list():
         print()
 
 
-@competition_cli.command("add-result", help="Import competition results given a csv file")
+@competition_cli.command("add-result", help="Allows results to be imported for a competition given a CSV file")
 def add_competition_results():
 
     competition_name = input("\n Enter competition name: ").strip()
