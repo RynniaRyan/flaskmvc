@@ -18,72 +18,59 @@ migrate = get_migrate(app)
 # This command creates and initializes the database
 @app.cli.command("init", help="Creates and initializes the database")
 def init():
-    #bob = initialize()
     initialize()
-    print('Database Intialized')
-    #print(bob)
+    print('\n Database Intialized! \n')
 
+""" This is a helper function to allow a deafult value for user input """
+def get_input(prompt, default):
+    response = input(f"{prompt} (default: '{default}'): ").strip()
+    return response if response else default  # Return response or default if blank
 
 
 '''
 |   User Group Commands
 |   These are a list of commands used to perform operations involving student users
 '''
-student_cli = AppGroup('student', help='Student object commands') 
-
-@student_cli.command("create", help="Creates a new user")
-@click.argument('id', default=816067890)
-@click.argument('firstname', default='Bob')
-@click.argument('lastname', default='Smith')
-@click.argument('email', default='bob.smith@uni.edu')
-@click.argument('degree', default='Computer Science (Special)')
-def add_student(id,firstname, lastname, email, degree):
-    newstudent = create_student(id, firstname, lastname, email, degree)
-    try:
-        db.session.add(newstudent)
-        db.session.commit()
-    except IntegrityError as e:
-        db.session.rollback()
-        print("Student user already exists!")
-    else:
-        print(f"Student user {student.firstname} {student.lastname} created!")
-
+student_cli = AppGroup('student', help='Student object commands')
 
 @student_cli.command("list", help="Displays all student users")
 def view_student_list():
     students = get_all_students()
     if not students:
-        print("No student users found.")
+        print("\n No student users found. \n")
     else:
+        print()
         for student in students:
             print(student)  
-            print()
+        print()
 
 
-@student_cli.command("view-competitions", help="Displays all competitions participated by student")
-@click.argument('firstname', default='Bob')
-@click.argument('lastname', default='Smith')
-def view_students_showcase(firstname, lastname):
+@student_cli.command("view-participation", help="Displays all students who participated in a particular competition")
+def view_students_showcase():
+
+    firstname = get_input("\n Enter student's first name", "Bob")
+    lastname = get_input("\n Enter student's last name", "Smith")
+
     student = get_user_by_name(firstname, lastname)
     
     if not student:
-        print(f"{firstname} {lastname} not found within database.")
+        print(f"\n '{firstname} {lastname}' not found within the database \n")
         return
 
-    # Use the relationship to access participations directly
     participations = student.participations
     
     if not participations:
-        print(f"{student.firstname} {student.lastname} has not participated in any competitions.")
+        print(f"\n {student.firstname} {student.lastname} has not participated in any competitions.\n")
         return
     
-    # Printing each competition
+    print()
     for participation in participations:
-        competition = Competition.query.filter_by(id=participation.id).first()
-        if competition:
-            print(participation)
-        else:
-            print("Uh oh, something is not right.")
+        
+        competition = Competition.query.filter_by(id=participation.competition_id).first()
+        
+        print(f"<Competition: {competition.name} | Location: {competition.location} | Date: {competition.date} | "
+                f"Rank: {participation.rank} | Score: {participation.score}> ")
+    print()
 
 app.cli.add_command(student_cli)
 
@@ -96,95 +83,118 @@ app.cli.add_command(student_cli)
 competition_cli = AppGroup('competition', help='Competition object commands') 
 
 @competition_cli.command("create",help="Creates a new competition")
-@click.argument('name', default="Bob's Code Challenge")
-@click.argument('date', default='30/09/2024')
-@click.argument('location', default="Bob Centre")
-@click.argument('organizer', default="Bob")
-def add_competition(name, date, location, organizer):
-    
+def add_competition():
+
+    name = get_input("\n Enter competition name", "Bob's Code Challenge")
+    date = get_input("\n Enter competition date (MM/DD/YYYY", "09/30/2024")
+    location = get_input("\n Enter competition location ", "Bob Centre")
+    organizer = get_input("\n Enter organizer name ", "Bob")
+
     newcompetition = Competition.query.filter_by(name=name).first()
 
     if not newcompetition:
         create_competition(name, date, location, organizer)
-        print(f"New Competition '{name}' created!")
+        print(f"\n New Competition '{name}' created! \n")
     else:
-        print(f"Competition '{name}' already exists!")
+        print(f"\n Competition '{name}' already exists! \n")
         return
 
 
 @competition_cli.command("list", help="View competitions list")
 def view_competition_list():
+
     competitions = get_all_competitions()
+
     if not competitions:
-        print("No competitions found.")
+        print("\n No competitions found. \n")
     else:
+        print()
         for competition in competitions:
             print(competition)  
-            print()
+        print()
 
 
-@competition_cli.command("add-result", help="Import competition results from file.csv")
-@click.argument('competition_name', default="Bob's Code Challenge")
-def add_competition_results(competition_name):
-    competition = Competition.query.filter_by(name=competition_name).first
+@competition_cli.command("add-result", help="Import competition results given a csv file")
+def add_competition_results():
+
+    competition_name = input("\n Enter competition name: ").strip()
+
+    import_file = get_input("\n Enter file directory path", "results.csv")
+
+    competition = Competition.query.filter_by(name=competition_name).first()
 
     if not competition:
-        print(f"Competition {competition_name} does not exist")
+        print(f"\n Competition '{competition_name}' does not exist! \n")
         return
+    
+    results_existing = Participation.query.filter_by(competition_id=competition.id).all()
 
-    with open('results.csv', 'r') as file:
-            reader = csv.DictReader(file)
+    if results_existing:
+        update_response = input(f"\n Results for competition '{competition_name}' already exist. Would you like to update them? (yes/no): ").strip().lower()
+        
+        if update_response == 'yes':
+            delete_participations_by_id(competition.id)
+            print(f"\n Previous results for '{competition_name}' have been deleted successfully! \n")
+        else:
+            print("\n No changes made. \n")
+            return
 
-            for row in reader:
-                newstudent = Student.query.filter_by(id=row['Student ID']).first()
+    try:
+        with open(import_file, 'r') as file:
+                reader = csv.DictReader(file)
 
-                if not newstudent:
-                    student = create_student(
-                        id=row['Student ID'],
-                        firstname=row['First Name'],
-                        lastname=row['Last Name'],
-                        email=row['Email'],
-                        degree=row['Rank']
+                for row in reader:
+                    newstudent = Student.query.filter_by(id=row['Student ID']).first()
+
+                    if not newstudent:
+                        student = create_student(
+                            id=row['Student ID'],
+                            firstname=row['First Name'],
+                            lastname=row['Last Name'],
+                            email=row['Email'],
+                            degree=row['Rank']
+                        )
+                    else:
+                        student = newstudent
+
+                    create_participation(
+                        student_id=student.id,  
+                        competition_id=competition.id, 
+                        rank=row['Rank'],
+                        score=float(row['Score']),
                     )
-                else:
-                    student = newstudent
+        
+        print(f" Results added to competition '{competition_name}' \n")
 
-                create_participation(
-                    student_id=student.id,  
-                    competition_id=competition.id, 
-                    rank=row['Rank'],
-                    score=int(row['Score']),
-                )
+    except FileNotFoundError:
+        cwd = os.getcwd()
+        files = os.listdir(cwd)
+        print("\n File 'results.txt' not found within directory %r: %s" % (cwd, files))
+        print()
 
 
+@competition_cli.command("view-result", help="Displays the results of a given competition")
+def view_compeititon_results():
+
+    competition_name = input("\n Enter competition name: ").strip()
+
+    competition = Competition.query.filter_by(name=competition_name).first()
+
+    if not competition:
+        print(f"\n Competition '{competition_name}' does not exsist \n")
+        return
+    else:
+
+        if not competition.participations:
+            print(f"\n There are no results imported yet for '{competition_name}' \n")
+        else:
+            print()
+            for participation in competition.participations:
+                    print(participation)
+            print()
+                
 app.cli.add_command(competition_cli)
 
-
-
-
-
-
-
-
-
-
-
-'''
-User Commands
-'''
-# Commands can be organized using groups
-
-# # create a group, it would be the first argument of the comand
-# # eg : flask user <command>
-# user_cli = AppGroup('user', help='User object commands') 
-
-# # Then define the command and any parameters and annotate it with the group (@)
-# @user_cli.command("create", help="Creates a user")
-# @click.argument("username", default="rob")
-# @click.argument("password", default="robpass")
-# def create_user_command(username, password):
-#     create_user(username, password)
-#     print(f'{username} created!')
 
 # # this command will be : flask user create bob bobpass
 # @user_cli.command("list", help="Lists users in the database")

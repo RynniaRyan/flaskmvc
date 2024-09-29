@@ -18,7 +18,6 @@ class Participation(db.Model):
     
     def __repr__(self):
         student = Student.query.get(self.student_id)
-        competition = Competition.query.get(self.competition_id)
-        return (f"< {competition.name} | "
+        return (f"< {student.firstname} {student.lastname} | "
                 f"Rank: {self.rank} | "
                 f"Score: {self.score}>")

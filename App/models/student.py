@@ -19,8 +19,8 @@ class Student(db.Model):
         self.degree = degree
 
     def __repr__(self):
-        return (f"<{self.firstname} {self.lastname} | "
-                f"{self.email} | Degree: {self.degree}>")
+        return (f"<Name: {self.firstname} {self.lastname} | "
+                f"Email: {self.email} | Degree: {self.degree}>")
 
     def get_json(self):
         return{

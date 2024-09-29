@@ -23,5 +23,4 @@ class Competition(db.Model):
               f"{self.date}>")
     
     def formatted_organizers(self):
-        # Spliting the organizer string and formatting it
-        return ', '.join(organizer.strip() for organizer in self.organizer.split(','))  # List of organizers
+        return ', '.join(organizer.strip() for organizer in self.organizer.split(','))

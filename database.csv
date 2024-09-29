@@ -1,15 +1,40 @@
 Student ID,First Name,Last Name,Email,Degree,University,Year of Study,Competition Name,Location,Date,Organizer,Rank,Score
-81602301,Alice,Johnson,alice.johnson@uni.edu,Computer Science,MIT,3,CodeFest 2024,"Boston, MA",3/21/2024,ACM,1,98.6
-81609452,Clara,Davis,clara.davis@uni.edu,Information Tech,University of California,4,CodeJam 2024,"San Francisco, CA",5/2/2024,Facebook,3,95
-81601234,Daniel,Lee,daniel.lee@uni.edu,Computer Eng.,Georgia Tech,1,Hackathon Global,"Atlanta, GA",6/15/2024,Hackathon Inc.,2,96.3
-81605678,Emma,Garcia,emma.garcia@uni.edu,Data Science,University of Texas,3,InnovateCode 2024,"Austin, TX",2/25/2024,Microsoft,4,92.5
-81608963,Frank,Martinez,frank.martinez@uni.edu,Software Eng.,MIT,2,CodeQuest International,"Boston, MA",7/11/2024,ACM,7,88.4
-81604321,Grace,Kim,grace.kim@uni.edu,Computer Science,CalTech,4,Hackathon Pro 2024,"Los Angeles, CA",3/19/2024,GitHub,6,89.8
-81607539,Henry,Wang,henry.wang@uni.edu,AI & Robotics,Stanford University,5,AI Code Challenge,"Palo Alto, CA",4/30/2024,OpenAI,2,96.1
-81609876,Isabella,Brown,isabella.brown@uni.edu,Computer Science,MIT,3,Python Masters 2024,"Boston, MA",8/18/2024,Python Software,8,85.7
-81603214,Jack,Wilson,jack.wilson@uni.edu,Software Eng.,University of Illinois,1,National CodeFest,"Chicago, IL",9/22/2024,IBM,10,81.2
-81600123,Natalie,Carter,natalie.carter@uni.edu,Data Science,University of Michigan,3,Global Code Challenge,"Ann Arbor, MI",10/5/2024,IBM,3,94.7
-81607654,Olivia,Patel,olivia.patel@uni.edu,Software Eng.,University of California,4,Silicon Valley Code Fest,"San Jose, CA",7/24/2024,Google,6,89.9
-81609123,Paul,Walker,paul.walker@uni.edu,Computer Science,University of Washington,2,Pacific Hackathon,"Seattle, WA",8/11/2024,Amazon,4,92.1
-81605789,Quinn,Baker,quinn.baker@uni.edu,AI & Robotics,MIT,5,RoboCode 2024,"Boston, MA",9/1/2024,ACM,1,97.5
-81604236,Ryan,Edwards,ryan.edwards@uni.edu,Information Tech,Stanford University,3,Stanford CodeSprint,"Stanford, CA",6/30/2024,Stanford University,5,91.8
+81600123,Natalie,Carter,natalie.carter@uni.edu,Computer Science (Special),Stanford University,2,CodeFest 2024,"Stanford, CA",4/15/2024,Tech Innovators,1,98.5
+81601235,Daniel,Lee,daniel.lee@uni.edu,Computer Engineering,Georgia Tech,3,CodeFest 2024,"Atlanta, GA",4/15/2024,Tech Innovators,2,95.3
+81604321,Grace,Kim,grace.kim@uni.edu,Information Technology,University of Texas,1,CodeFest 2024,"Austin, TX",4/15/2024,Tech Innovators,3,93.8
+81609452,Clara,Davis,clara.davis@uni.edu,Data Science,MIT,4,CodeFest 2024,"Boston, MA",4/15/2024,Tech Innovators,4,92.1
+81605678,Emma,Garcia,emma.garcia@uni.edu,Software Engineering,UC Berkeley,2,CodeFest 2024,"Berkeley, CA",4/15/2024,Tech Innovators,5,90
+81609123,Paul,Walker,paul.walker@uni.edu,Cybersecurity,NYU,3,CodeFest 2024,"New York, NY",4/15/2024,Tech Innovators,6,88.5
+81604236,Ryan,Edwards,ryan.edwards@uni.edu,Network Engineering,Stanford University,3,CodeFest 2024,"Stanford, CA",4/15/2024,Tech Innovators,7,87
+81609876,Isabella,Brown,isabella.brown@uni.edu,Computer Science,Harvard,1,CodeFest 2024,"Cambridge, MA",4/15/2024,Tech Innovators,8,85
+81607539,Henry,Wang,henry.wang@uni.edu,Software Development,MIT,2,CodeFest 2024,"Cambridge, MA",4/15/2024,Tech Innovators,9,83.5
+81601234,Bob,Smith,bob.smith@uni.edu,Computer Science (Special),Stanford University,3,CodeFest 2024,"Stanford, CA",4/15/2024,Tech Innovators,10,78
+81605678,Emma,Garcia,emma.garcia@uni.edu,Software Engineering,UC Berkeley,2,CodeJam 2024,"Berkeley, CA",5/20/2024,Tech Innovators,1,99
+81609452,Clara,Davis,clara.davis@uni.edu,Data Science,MIT,4,CodeJam 2024,"Boston, MA",5/20/2024,Tech Innovators,2,95.5
+81607539,Henry,Wang,henry.wang@uni.edu,Software Development,MIT,2,CodeJam 2024,"Cambridge, MA",5/20/2024,Tech Innovators,3,92.3
+81600123,Natalie,Carter,natalie.carter@uni.edu,Computer Science (Special),Stanford University,2,CodeJam 2024,"Stanford, CA",5/20/2024,Tech Innovators,4,90
+81608963,Frank,Martinez,frank.martinez@uni.edu,Information Security,Yale,4,Tech Innovators,"New Haven, CT",5/20/2024,Tech Innovators,5,88.5
+81604236,Ryan,Edwards,ryan.edwards@uni.edu,Network Engineering,Stanford University,3,CodeJam 2024,"Stanford, CA",5/20/2024,Tech Innovators,6,87
+81609123,Paul,Walker,paul.walker@uni.edu,Cybersecurity,NYU,3,CodeJam 2024,"New York, NY",5/20/2024,Tech Innovators,7,85.5
+81609876,Isabella,Brown,isabella.brown@uni.edu,Computer Science,Harvard,1,CodeJam 2024,"Cambridge, MA",5/20/2024,Tech Innovators,8,84
+81604321,Grace,Kim,grace.kim@uni.edu,Information Technology,University of Texas,1,CodeJam 2024,"Austin, TX",5/20/2024,Tech Innovators,9,82
+81601234,Bob,Smith,bob.smith@uni.edu,Computer Science (Special),Stanford University,3,CodeJam 2024,"Stanford, CA",5/20/2024,Tech Innovators,10,80
+81609876,Isabella,Brown,isabella.brown@uni.edu,Computer Science,Harvard,1,Hackathon Global,"Cambridge, MA",6/15/2024,Hackathon Inc.,1,99.5
+81601235,Daniel,Lee,daniel.lee@uni.edu,Computer Engineering,Georgia Tech,3,Hackathon Global,"Atlanta, GA",6/15/2024,Hackathon Inc.,2,96
+81607539,Henry,Wang,henry.wang@uni.edu,Software Development,MIT,2,Hackathon Global,"Cambridge, MA",6/15/2024,Hackathon Inc.,3,94.3
+81604321,Grace,Kim,grace.kim@uni.edu,Information Technology,University of Texas,1,Hackathon Global,"Austin, TX",6/15/2024,Hackathon Inc.,4,91
+81605678,Emma,Garcia,emma.garcia@uni.edu,Software Engineering,UC Berkeley,2,Hackathon Global,"Berkeley, CA",6/15/2024,Hackathon Inc.,5,89
+81609123,Paul,Walker,paul.walker@uni.edu,Cybersecurity,NYU,3,Hackathon Global,"New York, NY",6/15/2024,Hackathon Inc.,6,87.5
+81608963,Frank,Martinez,frank.martinez@uni.edu,Information Security,Yale,4,Hackathon Global,"New Haven, CT",6/15/2024,Hackathon Inc.,7,86
+81609452,Clara,Davis,clara.davis@uni.edu,Data Science,MIT,4,Hackathon Global,"Boston, MA",6/15/2024,Hackathon Inc.,8,84.5
+81604236,Ryan,Edwards,ryan.edwards@uni.edu,Network Engineering,Stanford University,3,Hackathon Global,"Stanford, CA",6/15/2024,Hackathon Inc.,9,82
+81609452,Clara,Davis,clara.davis@uni.edu,Data Science,MIT,4,InnovateCode 2024,"Boston, MA",7/20/2024,Innovate Hub,1,99
+81600123,Natalie,Carter,natalie.carter@uni.edu,Computer Science (Special),Stanford University,2,InnovateCode 2024,"Stanford, CA",7/20/2024,Innovate Hub,2,96.7
+81605678,Emma,Garcia,emma.garcia@uni.edu,Software Engineering,UC Berkeley,2,InnovateCode 2024,"Berkeley, CA",7/20/2024,Innovate Hub,3,93.5
+81604236,Ryan,Edwards,ryan.edwards@uni.edu,Network Engineering,Stanford University,3,InnovateCode 2024,"Stanford, CA",7/20/2024,Innovate Hub,4,91
+81604321,Grace,Kim,grace.kim@uni.edu,Information Technology,University of Texas,1,InnovateCode 2024,"Austin, TX",7/20/2024,Innovate Hub,5,88.8
+81607539,Henry,Wang,henry.wang@uni.edu,Software Development,MIT,2,InnovateCode 2024,"Cambridge, MA",7/20/2024,Innovate Hub,6,86
+81608963,Frank,Martinez,frank.martinez@uni.edu,Information Security,Yale,4,Innovate Hub,"New Haven, CT",7/20/2024,Innovate Hub,7,84
+81609123,Paul,Walker,paul.walker@uni.edu,Cybersecurity,NYU,3,Innovate Hub,"New York, NY",7/20/2024,Innovate Hub,8,82.5
+81609876,Isabella,Brown,isabella.brown@uni.edu,Computer Science,Harvard,1,Innovate Hub,"Cambridge, MA",7/20/2024,Innovate Hub,9,80
+81601234,Bob,Smith,bob.smith@uni.edu,Computer Science (Special),Stanford University,3,InnovateCode 2024,"Stanford, CA",7/20/2024,Innovate Hub,11,78.5

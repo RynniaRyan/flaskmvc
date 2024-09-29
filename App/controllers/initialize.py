@@ -21,7 +21,7 @@ def initialize():
 
                 if not newstudent:
                     student = create_student(
-                        id=row['Student ID'],
+                        id=int(row['Student ID']),
                         firstname=row['First Name'],
                         lastname=row['Last Name'],
                         email=row['Email'],
@@ -52,13 +52,4 @@ def initialize():
     except FileNotFoundError:
         cwd = os.getcwd()  # Get the current working directory (cwd)
         files = os.listdir(cwd)  # Get all the files in that directory
-        print("Files in %r: %s" % (cwd, files))
-
-    # bob = create_student(
-    #         id="816012345"
-    #         firstname="Bob",
-    #         lastname="Smith",
-    #         email="bob.smith@example.com",
-    #         degree="Computer Science",
-
-    # return bob
+        print("File 'database.txt' not found within directory %r: %s" % (cwd, files))
