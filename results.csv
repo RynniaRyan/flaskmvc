@@ -1,10 +1,10 @@
-Student ID,First Name,Last Name,Email,Rank,Score
-81602301,Alice,Johnson,alice.johnson@uni.edu,1,98.6
-81601235,Daniel,Lee,daniel.lee@uni.edu,2,96.3
-81607539,Henry,Wang,henry.wang@uni.edu,3,96.1
-81609452,Clara,Davis,clara.davis@uni.edu,4,95.0
-81601234,Bob,Smith,bob.rob@uni.edu,5,91.2
-81605678,Emma,Garcia,emma.garcia@uni.edu,6,92.5
-81604321,Grace,Kim,grace.kim@uni.edu,7,89.8
-81608963,Frank,Martinez,frank.martinez@uni.edu,8,88.4
-81609876,Isabella,Brown,isabella.brown@uni.edu,9,85.7
+Student ID,First Name,Last Name,Email,Degree,Rank,Score
+81602301,Alice,Johnson,alice.johnson@uni.edu,Software Development,1,98.6
+81601235,Daniel,Lee,daniel.lee@uni.edu,Computer Engineering,2,96.4
+81607539,Henry,Wang,henry.wang@uni.edu,Software Development,3,96.1
+81609452,Clara,Davis,clara.davis@uni.edu,Data Science,4,95.0
+81601234,Bob,Smith,bob.rob@uni.edu,Computer Science (Special),5,91.2
+81605678,Emma,Garcia,emma.garcia@uni.edu,Software Engineering,6,92.5
+81604321,Grace,Kim,grace.kim@uni.edu,Information Technology,7,89.8
+81608963,Frank,Martinez,frank.martinez@uni.edu,N/A,8,88.4
+81609876,Isabella,Brown,isabella.brown@uni.edu,Computer Science,9,85.7

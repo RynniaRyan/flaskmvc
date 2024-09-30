@@ -1,5 +1,4 @@
 from App.database import db
-from App.models import Competition
 
 class Competition(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,10 +25,10 @@ class Competition(db.Model):
     def get_json(self):
         return {
             'id': self.id,
-            'firstname': self.firstname,
-            'lastname': self.lastname,
-            'email': self.email,
-            'degree': self.degree
+            'name': self.name,
+            'location': self.location,
+            'date': self.date,
+            'organizer': self.organizer
         }
     
     def formatted_organizers(self):

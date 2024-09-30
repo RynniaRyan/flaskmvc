@@ -14,15 +14,6 @@ def get_user_by_name(firstname, lastname):
 def get_all_students():
     return Student.query.all()
 
-def get_json(self):
-        return {
-            'id': self.id,
-            'firstname': self.firstname,
-            'lastname': self.lastname,
-            'email': self.email,
-            'degree': self.degree
-        }
-
 def get_all_students_json():
     students = Student.query.all()
     if not students:

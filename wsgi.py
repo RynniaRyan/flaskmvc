@@ -6,9 +6,8 @@ from datetime import datetime
 
 from App.database import db, get_migrate
 from App.main import create_app
-#from App.controllers import ( initialize )
 from App.controllers import *
-from App.models import Student
+from App.controllers import (add_results_from_csv)
 from App.models import Competition
 
 # This commands file allow you to create convenient CLI commands for testing controllers
@@ -21,10 +20,11 @@ def init():
     initialize()
     print('\n Database Intialized! \n')
 
-""" This is a helper function to allow a deafult value for user input """
+# This is a helper function to allow a deafult value for user input
 def get_input(prompt, default):
     response = input(f"{prompt} (default: '{default}'): ").strip()
     return response if response else default
+
 
 
 '''
@@ -34,8 +34,14 @@ def get_input(prompt, default):
 student_cli = AppGroup('student', help='Student object commands')
 
 @student_cli.command("list", help="Displays all student within database")
-def view_student_list():
-    students = get_all_students()
+@click.argument("output_format", default="string")
+def view_student_list(output_format):
+
+    if output_format == 'string':
+        students = get_all_students()
+    else:
+        students = get_all_competitions_json()
+    
     if not students:
         print("\n No student users found. \n")
     else:
@@ -62,8 +68,8 @@ def view_students_showcase():
     if not participations:
         print(f"\n {student.firstname} {student.lastname} has not participated in any competitions.\n")
         return
-    
     print()
+
     for participation in participations:
         
         competition = Competition.query.filter_by(id=participation.competition_id).first()
@@ -101,9 +107,13 @@ def add_competition():
 
 
 @competition_cli.command("list", help="Displays all the competitions within database")
-def view_competition_list():
+@click.argument("output_format", default="string")
+def view_competition_list(output_format):
 
-    competitions = get_all_competitions()
+    if output_format == 'string':
+        competitions = get_all_competitions()
+    else:
+        competitions = get_all_competitions_json()
 
     if not competitions:
         print("\n No competitions found. \n")
@@ -116,61 +126,27 @@ def view_competition_list():
 
 @competition_cli.command("add-result", help="Allows results to be imported for a competition given a CSV file")
 def add_competition_results():
-
     competition_name = input("\n Enter competition name: ").strip()
-
-    import_file = get_input("\n Enter file directory path", "results.csv")
+    import_file = get_input("\n Enter file directory path: ", "results.csv")
 
     competition = Competition.query.filter_by(name=competition_name).first()
 
     if not competition:
-        print(f"\n Competition '{competition_name}' does not exist! \n")
+        print(f"\n Competition '{competition_name}' does not exist!\n")
         return
     
     results_existing = Participation.query.filter_by(competition_id=competition.id).all()
 
     if results_existing:
         update_response = input(f"\n Results for competition '{competition_name}' already exist. Would you like to update them? (yes/no): ").strip().lower()
-        
+
         if update_response == 'yes':
             delete_participations_by_id(competition.id)
-            print(f"\n Previous results for '{competition_name}' have been deleted successfully! \n")
         else:
-            print("\n No changes made. \n")
+            print("\n No changes made.\n")
             return
 
-    try:
-        with open(import_file, 'r') as file:
-                reader = csv.DictReader(file)
-
-                for row in reader:
-                    newstudent = Student.query.filter_by(id=row['Student ID']).first()
-
-                    if not newstudent:
-                        student = create_student(
-                            id=row['Student ID'],
-                            firstname=row['First Name'],
-                            lastname=row['Last Name'],
-                            email=row['Email'],
-                            degree=row['Rank']
-                        )
-                    else:
-                        student = newstudent
-
-                    create_participation(
-                        student_id=student.id,  
-                        competition_id=competition.id, 
-                        rank=row['Rank'],
-                        score=float(row['Score']),
-                    )
-        
-        print(f" Results added to competition '{competition_name}' \n")
-
-    except FileNotFoundError:
-        cwd = os.getcwd()
-        files = os.listdir(cwd)
-        print("\n File 'results.txt' not found within directory %r: %s" % (cwd, files))
-        print()
+    add_results_from_csv(competition, import_file)
 
 
 @competition_cli.command("view-result", help="Displays the results of a given competition")
