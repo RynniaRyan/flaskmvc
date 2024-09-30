@@ -1,3 +1,7 @@
+
+
+# ---  --- --- --- THIS MODEL IS TO BE OMITTED/IGNORED --- --- --- --- ----
+
 from App.models import User
 from App.database import db
 

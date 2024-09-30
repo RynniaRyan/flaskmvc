@@ -1,3 +1,8 @@
+
+
+# ---  --- --- --- THIS MODEL IS TO BE OMITTED/IGNORED --- --- --- --- ----
+
+
 from werkzeug.security import check_password_hash, generate_password_hash
 from App.database import db
 
