@@ -13,3 +13,11 @@ def get_results(student_id, competition_id):
 
 def get_participation_by_student_id(student_id):
     return Participation.query.filter_by(student_id=student_id).all()
+
+def delete_participations_by_id(competiiton_id):
+    participations = Participation.query.filter_by(competition_id=competiiton_id).all()
+
+    for participation in participations:
+        db.session.delete(participation)
+
+    db.session.commit()

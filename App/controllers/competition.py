@@ -49,11 +49,3 @@ def add_results_from_csv(competition, csv_file):
 
     except FileNotFoundError:
         print(f"\n File '{csv_file}' not found.\n")
-
-def delete_participations_by_id(competiiton_id):
-    participations = Participation.query.filter_by(competition_id=competiiton_id).all()
-
-    for participation in participations:
-        db.session.delete(participation)
-
-    db.session.commit()
