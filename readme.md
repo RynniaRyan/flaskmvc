@@ -12,7 +12,8 @@ This command-line application facilitates the management and display of student 
 # Template Used
 Created using a template for flask applications structured in the Model View Controller pattern.
 
-### NOTE: #### All User Model related content is to be ignored
+### NOTE: 
+#### All User Model related content is to be ignored
 
 # Dependencies
 * Python3/pip3
